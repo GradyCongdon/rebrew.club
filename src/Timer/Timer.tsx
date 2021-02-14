@@ -2,7 +2,7 @@ import React from 'react';
 import { rand0 } from '../utils'
 import './Timer.scss'
 
-const values = (x: string) => x.split('').map(c => (<h2 className="value">{c}</h2>));
+const values = (x: string) => x.split('').map(([c, i]: any) => (<h2 key={`${i}-${c}`} className="value">{c}</h2>));
 
 export const Timer = () => {
     const min = `0${rand0(3)}`;
@@ -24,9 +24,9 @@ export const Timer = () => {
                 <label className="label">
                     sec
                 </label>
-                <h2 className="values">
+                <div className="values">
                     {$secValues}
-                </h2>
+                </div>
             </section>
         </section>
     );

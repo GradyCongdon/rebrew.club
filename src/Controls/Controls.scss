@@ -10,12 +10,17 @@
     button {
       -webkit-appearance: none;
       appearance: none;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
   
-      width: 20vw;
-      height: 20vw;
+      width: 5rem;
+      height: 5rem;
   
       position: relative;
-      top: -3vh;
+      top: -1rem;
   
       border: none;
       border-radius: 100%;
@@ -27,7 +32,7 @@
       font-size: 1.6rem; //small
       span {
         display: inline-block;
-        margin-top: 5vh;
+        margin-top: 2rem;
       }
     }
   }

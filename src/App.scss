@@ -13,6 +13,16 @@ body {
   font-family: 'Oranienbaum', serif;
   font-size: 16px;
   color: $text-active;
+  @media screen and (min-width: 425px) {
+    background-color: #fcfffd;
+  }
+
+  // @media screen and (min-width: 320px) {
+  //     font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+  // }
+  // @media screen and (min-width: 1000px) {
+  //     font-size: 22px;
+  // }
 }
 
 main {
@@ -23,18 +33,34 @@ main {
     'controls controls'
     'name name'
     'color color'
-    'gap1 gap1'
+    'gap gap'
     'weight water'
-    'gap2 gap2'
-    'timer brew'
+    'brew timer'
   ;
-  grid-template-columns: 50vw 50vw;
-  grid-template-rows: 4vh 12vh 25vh 2vh 20vh 1vh 20vh;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 4% 12% 24% 1% 20% 20%;
   overflow: hidden;
-  @media screen and (min-width: 768px) {
-    width: 600px;
+  background-color: white;
+  @media screen and (min-width: 425px) {
+    width: 425px;
     margin: 0 auto;
+    border: 1px solid #f7f7f7;
   }
+}
+input,
+button {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background: none;
+  font-family: inherit;;
+  color: inherit;
+  &:focus {
+    outline: none;
+  }
+}
+input {
+  opacity: 0;
 }
 
 // main > section {
@@ -56,6 +82,15 @@ main {
 }
 .color {
   grid-area: color;
+}
+.weight,
+.water,
+.timer,
+.brew {
+  transform-origin: center;
+  transform: scale(.85);
+  min-width: 100%;
+  min-height: 100%;
 }
 .weight {
   grid-area: weight;
