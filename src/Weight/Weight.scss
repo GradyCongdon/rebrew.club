@@ -1,0 +1,42 @@
+@import '../colors.scss';
+
+
+.weight {
+    display: grid;
+    grid-template-areas: 
+      "a b c"
+      "d value e"
+      "tsp f g"
+    ;
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr;
+    position: relative;
+    .value {
+        grid-area: value;
+        font-size: 4.5rem;
+    }
+}
+
+.diamond {
+    width: 25vw;
+    height: 25vw;
+    border: 2px solid $line;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 3vh;
+    left: 5.5vh;
+}
+
+.tsp {
+    grid-area: tsp;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.g {
+    grid-area: g;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}

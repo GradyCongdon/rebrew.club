@@ -4,6 +4,8 @@ import { Brew } from './Brew';
 import { Controls } from './Controls';
 import { Color } from './Color';
 import { Timer } from './Timer';
+import { Weight } from './Weight';
+import { Water } from './Water';
 
 import './App.scss';
 
@@ -30,37 +32,5 @@ const Name = () => {
     </section>
   );
 }
-
-const Weight = () => {
-  const weight = 12;
-  return (
-    <section className="weight">
-      <div className="diamond">
-        <input type="text" value={weight} />
-        <h2>{weight}</h2>
-      </div>
-      <button>tsp</button>
-      <button>g</button>
-    </section>
-  );
-
-}
-
-const Water = () => {
-  const water = 333;
-  return (
-    <section className="water">
-      <div className="glass">
-        <input type="text" value={water} />
-        <h2>{water}</h2>
-      </div>
-      <button>oz</button>
-      <button>g</button>
-    </section>
-  );
-}
-
-
-
 
 export default App;

@@ -23,11 +23,14 @@ main {
     'controls controls'
     'name name'
     'color color'
+    'gap1 gap1'
     'weight water'
+    'gap2 gap2'
     'timer brew'
   ;
   grid-template-columns: 50vw 50vw;
-  grid-template-rows: 5vh 15vh 40vh 20vh 20vh;
+  grid-template-rows: 4vh 12vh 25vh 2vh 20vh 1vh 20vh;
+  overflow: hidden;
   @media screen and (min-width: 768px) {
     width: 600px;
     margin: 0 auto;
@@ -71,4 +74,13 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+.amount-label {
+  font-size: 1.8rem;
+  color: $text-passive;
+  &.active {
+      color: $text-active;
+  }
 }

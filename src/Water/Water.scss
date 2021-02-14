@@ -1,0 +1,44 @@
+@import '../colors.scss';
+
+.water {
+    display: grid;
+    grid-template-areas: 
+      "a"
+      "value"
+      "label"
+    ;
+    grid-template-columns: 1fr; 
+    grid-template-rows: 1fr 1fr 1fr;
+    position: relative;
+    .value {
+        grid-area: value;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .amount {
+            font-size: 4.5rem;
+        }
+    }
+    .label {
+        grid-area: label;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10vw;
+    }
+}
+
+
+
+.glass {
+    grid-area: value;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-width: 35vw;
+    min-height: 23vw;
+    border: 2px solid $line;
+    border-top: none;
+}
+
+

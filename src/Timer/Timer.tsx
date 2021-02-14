@@ -1,11 +1,12 @@
 import React from 'react';
+import { rand0 } from '../utils'
 import './Timer.scss'
 
-const values = (x:string) => x.split('').map(c => (<h2 className="value">{c}</h2>));
+const values = (x: string) => x.split('').map(c => (<h2 className="value">{c}</h2>));
 
 export const Timer = () => {
-    const min = '01';
-    const sec = '30';
+    const min = `0${rand0(3)}`;
+    const sec = `${rand0(5)}${rand0(9)}`;
     const $minValues = values(min);
     const $secValues = values(sec);
     return (
