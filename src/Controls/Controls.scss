@@ -1,0 +1,33 @@
+@import '../colors.scss';
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    padding: 0 5vw;
+  
+    button {
+      -webkit-appearance: none;
+      appearance: none;
+  
+      width: 20vw;
+      height: 20vw;
+  
+      position: relative;
+      top: -3vh;
+  
+      border: none;
+      border-radius: 100%;
+  
+      background-color: $action-passive;
+      color: $action-active;
+  
+      font-family: 'Oranienbaum', serif;
+      font-size: 1.6rem; //small
+      span {
+        display: inline-block;
+        margin-top: 5vh;
+      }
+    }
+  }

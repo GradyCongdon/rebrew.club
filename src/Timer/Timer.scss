@@ -1,0 +1,43 @@
+@import '../colors.scss';
+
+.timer {
+    width: 150px;
+    margin: 0 auto;
+}
+
+.capsule {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    padding-left: .25rem;
+    padding-right: 1rem;
+
+    border: 2px solid $line;
+    border-radius: 500px;
+}
+
+.label {
+    font-size: 1.1rem;
+}
+
+.values {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 17vw;
+}
+
+.value {
+    display: inline-block;
+    min-width: 1ch;
+    height: 10.5vh;
+    font-size: 4.5rem;
+    text-align: center;
+    line-height: 1;
+}
+
+.sec {
+    position: relative;
+    top: -2px;
+}

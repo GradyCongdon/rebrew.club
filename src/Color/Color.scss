@@ -1,0 +1,44 @@
+.color {
+    display: grid;
+    grid-template-columns: 25vw 25vw 25vw 25vw;
+    grid-template-rows: auto;
+  
+    .black {
+      background-color: #25452E;
+      color: rgba(255, 255, 255, 0.48);
+    }
+  
+    .oolong {
+      background-color: #428F58;
+      color: rgba(255, 255, 255, 0.45);
+      .olong {
+        position: relative;
+        .o {
+          position: absolute;
+          top: 1.5175ch;
+          left: 0.65ch;
+          font-size: 50%;
+          font-weight: bold;
+        }
+      }
+    }
+  
+    .green {
+      background-color: #4BB368;
+      color: rgba(255, 255, 255, 0.56);
+    }
+  
+    .white {
+      background-color: #97EBAE;
+      color: rgba(255, 255, 255, 0.69);
+    }
+  
+    .text {
+      display: inline-block;
+      transform: rotate(90deg);
+  
+      font-family: 'Prompt', serif;
+      text-transform: uppercase;
+      font-size: 1.8rem;
+    }
+  }
