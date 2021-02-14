@@ -1,7 +1,13 @@
 import React from 'react';
 import './Color.scss'
 
-export const Color = () => {
+interface ColorProps {
+    color: string,
+    setColor: any,
+}
+
+
+export const Color = ({ color, setColor }: ColorProps) => {
     return (
         <section className="color">
             <button className="f-cc black">

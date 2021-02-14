@@ -1,31 +1,55 @@
-import React from 'react';
-import { rand0 } from '../utils'
+import React, { useState } from 'react';
+import { parseAmountInput } from '../utils';
 import './Timer.scss'
 
-const values = (x: string) => x.split('').map(([c, i]: any) => (<h2 key={`${i}-${c}`} className="value">{c}</h2>));
 
-export const Timer = () => {
-    const min = `0${rand0(3)}`;
-    const sec = `${rand0(5)}${rand0(9)}`;
-    const $minValues = values(min);
-    const $secValues = values(sec);
+const values = (x: number) => {
+    x = x < 0 ? 0 : x;
+    const str = x < 10 ? `0${x}` : `${x}`;
+    return str
+        .split('')
+        .map((c: string, i: number) => (
+            <h2 key={`${i}-${c}`} className="value">{c}</h2>
+        ));
+}
+
+interface TimerProps {
+    minutes: number
+    seconds: number
+    setMinutes: any
+    setSeconds: any
+}
+
+export const Timer = ({ minutes, setMinutes, seconds, setSeconds }: TimerProps) => {
+    const $min = values(minutes);
+    const $sec = values(seconds);
     return (
         <section className="timer">
             <section className="capsule min">
+                <input
+                    type="tel"
+                    className="input--timer"
+                    value={minutes}
+                    onChange={(e) => setMinutes(parseAmountInput(9, e))} />
                 <label className="label">
                     min
                 </label>
                 <div className="values">
-                    {$minValues}
+                    {$min}
                 </div>
             </section>
 
             <section className="capsule sec">
+                <input
+                    type="tel"
+                    className="input--timer"
+                    value={seconds}
+                    onChange={(e) => setSeconds(parseAmountInput(59, e))} />
                 <label className="label">
                     sec
                 </label>
                 <div className="values">
-                    {$secValues}
+                    {$sec}
                 </div>
             </section>
         </section>

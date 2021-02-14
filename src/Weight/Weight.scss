@@ -24,6 +24,7 @@
 .input--weight {
     width: 100%;
     height: 75%;
+    margin-top: -15%;
     position: absolute;
 }
 
@@ -47,14 +48,18 @@ $size: 6rem;
         transform: rotate(-45deg);
     }
 
-    .tsp {
+    .tsp,
+    .g {
         position: absolute;
+        pointer-events: all;
+    }
+
+    .tsp {
         transform: rotate(-45deg);
         top: ($size * 1.1);
     }
 
     .g {
-        position: absolute;
         /* TODO */
         transform: translate(($size / 1.4285714286), ($size / 15)) rotate(-45deg);
     }

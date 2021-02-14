@@ -1,9 +1,25 @@
 import React, { useState } from 'react';
-import { parseAmountInput } from '../utils';
+import { cls, parseAmountInput } from '../utils';
 import './Water.scss';
 
-export const Water = () => {
-    const [water, setWater] = useState(0);
+interface WaterProps {
+    water: number,
+    setWater: any,
+    isMass: boolean;
+    setIsMass: any
+}
+
+export const Water = ({ water, setWater, isMass, setIsMass }: WaterProps) => {
+    const ozClasses = cls([
+        'amount-label',
+        'oz',
+        isMass ? '' : 'active',
+    ]);
+    const gClasses = cls([
+        'amount-label',
+        'g',
+        isMass ? 'active' : '',
+    ]);
     return (
         <section className="water">
             <input
@@ -17,8 +33,8 @@ export const Water = () => {
                 </div>
             </div>
             <div className="label">
-                <button className="amount-label oz">oz</button>
-                <button className="amount-label g active">g</button>
+                <button className={ozClasses} onClick={() => setIsMass(false)}>oz</button>
+                <button className={gClasses} onClick={() => setIsMass(true)}>g</button>
             </div>
         </section>
     );

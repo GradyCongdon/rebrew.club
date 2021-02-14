@@ -1,15 +1,21 @@
 import React from 'react';
 import './Brew.scss';
 
-export const Brew = () => {
-    const count = Math.floor(Math.random() * 6) + 1;
-    const number = `number-${count}`;
+interface BrewProps {
+    brew: number;
+    setBrew: any;
+}
+
+export const Brew = ({ brew, setBrew }: BrewProps) => {
+    const number = `number-${brew}`;
     return (
         <section className="brew">
-            <div className="text">
-                <label>Brew</label>
-                <h2 className={'count ' + number}>{count}</h2>
-            </div>
+            <button onClick={() => setBrew(++brew)}>
+                <div className="text">
+                    <label>Brew</label>
+                    <h2 className={'count ' + number}>{brew}</h2>
+                </div>
+            </button>
         </section>
     );
 }
