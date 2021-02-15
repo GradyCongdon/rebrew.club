@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/rebrew.club/static/css/main.b3b7805e.chunk.css",
-    "main.js": "/rebrew.club/static/js/main.8833275e.chunk.js",
-    "main.js.map": "/rebrew.club/static/js/main.8833275e.chunk.js.map",
-    "runtime-main.js": "/rebrew.club/static/js/runtime-main.f736b09f.js",
-    "runtime-main.js.map": "/rebrew.club/static/js/runtime-main.f736b09f.js.map",
-    "static/js/2.28640dba.chunk.js": "/rebrew.club/static/js/2.28640dba.chunk.js",
-    "static/js/2.28640dba.chunk.js.map": "/rebrew.club/static/js/2.28640dba.chunk.js.map",
-    "static/js/3.b0ac1dfa.chunk.js": "/rebrew.club/static/js/3.b0ac1dfa.chunk.js",
-    "static/js/3.b0ac1dfa.chunk.js.map": "/rebrew.club/static/js/3.b0ac1dfa.chunk.js.map",
-    "index.html": "/rebrew.club/index.html",
-    "static/css/main.b3b7805e.chunk.css.map": "/rebrew.club/static/css/main.b3b7805e.chunk.css.map",
-    "static/js/2.28640dba.chunk.js.LICENSE.txt": "/rebrew.club/static/js/2.28640dba.chunk.js.LICENSE.txt"
+    "main.css": "/static/css/main.b3b7805e.chunk.css",
+    "main.js": "/static/js/main.8833275e.chunk.js",
+    "main.js.map": "/static/js/main.8833275e.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.41c4fddf.js",
+    "runtime-main.js.map": "/static/js/runtime-main.41c4fddf.js.map",
+    "static/js/2.28640dba.chunk.js": "/static/js/2.28640dba.chunk.js",
+    "static/js/2.28640dba.chunk.js.map": "/static/js/2.28640dba.chunk.js.map",
+    "static/js/3.b0ac1dfa.chunk.js": "/static/js/3.b0ac1dfa.chunk.js",
+    "static/js/3.b0ac1dfa.chunk.js.map": "/static/js/3.b0ac1dfa.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.b3b7805e.chunk.css.map": "/static/css/main.b3b7805e.chunk.css.map",
+    "static/js/2.28640dba.chunk.js.LICENSE.txt": "/static/js/2.28640dba.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.f736b09f.js",
+    "static/js/runtime-main.41c4fddf.js",
     "static/js/2.28640dba.chunk.js",
     "static/css/main.b3b7805e.chunk.css",
     "static/js/main.8833275e.chunk.js"
