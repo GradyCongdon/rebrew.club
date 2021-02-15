@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Brew } from './Brew';
 import { Controls } from './Controls';
 import { Color } from './Color';
+import { Temperature } from './Temperature';
 import { Timer } from './Timer';
 import { Name } from './Name';
 import { Weight } from './Weight';
@@ -13,6 +14,8 @@ import { cls } from './utils';
 
 function App() {
   const [name, setName] = useState('Tai Ping Hou Kui');
+  const [temperature, setTemperature] = useState(0);
+  const [isCelsius, setIsCelsius] = useState(true);
   const [color, setColor] = useState('');
   const [weight, setWeight] = useState(0);
   const [isMassWeight, setIsMassWeight] = useState(true);
@@ -64,6 +67,7 @@ function App() {
       }} className={overlayClasses}></div>
         <Controls />
       <Name name={name} setName={setName} />
+      <Temperature temperature={temperature} setTemperature={setTemperature} isCelsius={isCelsius} setIsCelsius={setIsCelsius} />
       <Color color={color} setColor={setColor} />
       <Weight weight={weight} setWeight={setWeight} isMass={isMassWeight} setIsMass={setIsMassWeight} />
       <Water water={water} setWater={setWater} isMass={isMassWater} setIsMass={setIsMassWater} />

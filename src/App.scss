@@ -32,13 +32,14 @@ main {
   grid-template-areas: 
     'controls controls'
     'name name'
-    'color color'
-    'gap gap'
-    'weight water'
-    'brew timer'
+    'color weight'
+    'gap1 gap1'
+    'temp water'
+    'gap2 gap2'
+    'timer brew'
   ;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 4% 12% 24% 1% 20% 20%;
+  grid-template-rows: 4% 18% 20% 3% 20% 3% 20%;
   overflow: hidden;
   background-color: white;
   position: relative;
@@ -123,12 +124,17 @@ input {
 .name {
   grid-area: name;
 }
+.temperature {
+  grid-area: temp;
+}
 .color {
   grid-area: color;
 }
 .weight,
 .water,
 .timer,
+.temperature,
+.color,
 .brew {
   transform-origin: center;
   transform: scale(.85);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { cls } from '../utils';
 import './Color.scss'
 
 interface ColorProps {
@@ -6,16 +7,22 @@ interface ColorProps {
     setColor: any,
 }
 
+const colorClass = (name: string, color: string) => cls([
+    'f-cc',
+    name,
+    name === color ? 'active' : ''
+]);
+
 
 export const Color = ({ color, setColor }: ColorProps) => {
     return (
-        <section className="color">
-            <button className="f-cc black">
+        <section className="color bg">
+            <button className={colorClass('black', color)} onClick={() => setColor('black')} >
                 <span className="text">
                     Black
           </span>
             </button>
-            <button className="f-cc oolong">
+            <button className={colorClass('oolong', color)} onClick={() => setColor('oolong')}>
                 <span className="text">
                     <span className="olong">
                         <span className="big-O">
@@ -26,15 +33,15 @@ export const Color = ({ color, setColor }: ColorProps) => {
                     </span>
                 </span>
             </button>
-            <button className="f-cc green">
+            <button className={colorClass('green', color)} onClick={() => setColor('green')}>
                 <span className="text">
                     Green
           </span>
             </button>
-            <button className="f-cc white">
+            <button className={colorClass('white', color)} onClick={() => setColor('white')}>
                 <span className="text">
                     White
-          </span>
+                </span>
             </button>
         </section>
     );

@@ -1,49 +1,89 @@
+@import '../colors.scss';
+
 .color {
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%; 
-    grid-template-rows: auto;
+    grid-template-rows: 25% 25% 25% 25%; 
+    grid-template-columns: auto;
+
+    color: $text-passive;
 
   
-    .black {
-      background-color: #25452E;
-      color: rgba(255, 255, 255, 0.48);
+
+    .active {
+      width: 8rem;
+      margin: 0 auto;
+      color: rgba(255, 255, 255, .86);
+      color: $text-active;
+      border-radius: 1px;
+      border: solid 1px white;
+
+      &.border {
+        .black {
+          border-color: #551610;
+        }
+      
+        .oolong {
+          border-color: #BE873E;
+        }
+      
+        .green {
+          border-color: #ccbd56;
+        }
+      
+        .white {
+          border-color:#E1DB9B;
+        }
+
+      }
+      &.bg {
+        .black {
+          //  background-color: #25452E;
+          background-color: #551610;
+          // color: rgba(255, 255, 255, 0.48);
+        }
+      
+        .oolong {
+          // background-color: #428F58;
+          background-color: #BE873E;
+          //  color: rgba(255, 255, 255, 0.45);
+        }
+      
+        .green {
+          // background-color: #4BB368;
+          background-color: #ccbd56;
+          //  color: rgba(255, 255, 255, 0.56);
+        }
+      
+        .white {
+          // background-color: #97EBAE;
+          background-color:#E1DB9B;
+          //  color: rgba(255, 255, 255, .86);
+        }
+
+      }
     }
-  
-    .oolong {
-      background-color: #428F58;
-      color: rgba(255, 255, 255, 0.45);
-      .olong {
+
+    .olong {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      .big-O {
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        .big-O {
-          display: inline-flex;
-          justify-content: center;
-          align-items: center;
-        }
-        .o {
-          position: absolute;
-          font-size: 55%;
-        }
+      }
+      .o {
+        position: absolute;
+        font-size: 55%;
       }
     }
+
+  .text {
+    display: inline-block;
+
+    font-family: 'Prompt', serif;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+  }
   
-    .green {
-      background-color: #4BB368;
-      color: rgba(255, 255, 255, 0.56);
-    }
-  
-    .white {
-      background-color: #97EBAE;
-      color: rgba(255, 255, 255, .86);
-    }
-  
-    .text {
-      display: inline-block;
-      transform: rotate(90deg);
-  
-      font-family: 'Prompt', serif;
-      text-transform: uppercase;
-      font-size: 1.8rem;
-    }
   }
