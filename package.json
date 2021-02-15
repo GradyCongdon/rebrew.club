@@ -2,7 +2,7 @@
   "name": "rebew.club",
   "version": "0.1.1",
   "private": false,
-  "homepage": "http://gradycongdon.github.io/rebrew.club",
+  "homepage": "http://rebrew.club",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
