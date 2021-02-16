@@ -40,6 +40,7 @@ main {
   position: relative;
   @media screen and (min-width: 425px) {
     width: 425px;
+    height: 100vh;
     margin: 0 auto;
     border: 1px solid #f7f7f7;
   }
