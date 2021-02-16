@@ -54,3 +54,9 @@
     position: relative;
     top: -2px;
 }
+
+.selected {
+    .capsule {
+        border-color: $action-active;
+    }
+}

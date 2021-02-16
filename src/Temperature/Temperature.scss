@@ -49,7 +49,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    min-width: 8rem;
+    min-width: 8.5rem;
     min-height: 5.5rem;
     border: 2px solid $line;
     border-top: none;
@@ -58,3 +58,8 @@
 }
 
 
+.selected {
+    .circle {
+        border-color: $action-active;
+    }
+}

@@ -20,19 +20,23 @@
       height: 5rem;
   
       position: relative;
-      top: -1rem;
+      top: -.5rem;
   
       border: none;
       border-radius: 100%;
   
-      background-color: $action-passive;
-      color: $action-active;
+      // background-color: $action-passive;
+      // color: $action-active;
+      background-color: white;
+      border: 1px solid $line;
+      color: $text-active;
   
       font-family: 'Oranienbaum', serif;
       font-size: 1.6rem; //small
       span {
         display: inline-block;
         margin-top: 2rem;
+        pointer-events: none;
       }
     }
   }

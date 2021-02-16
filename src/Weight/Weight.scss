@@ -65,3 +65,10 @@ $size: 6rem;
     }
 
 }
+
+
+.selected {
+    .diamond {
+        border-color: $action-active;
+    }
+}

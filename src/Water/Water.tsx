@@ -3,13 +3,15 @@ import { cls, parseAmountInput } from '../utils';
 import './Water.scss';
 
 interface WaterProps {
-    water: number,
-    setWater: any,
-    isMass: boolean;
+    water: number
+    setWater: any
+    isMass: boolean
     setIsMass: any
+    selected: string
+    setSelected: any
 }
 
-export const Water = ({ water, setWater, isMass, setIsMass }: WaterProps) => {
+export const Water = ({ water, setWater, isMass, setIsMass, selected, setSelected }: WaterProps) => {
     const ozClasses = cls([
         'amount-label',
         'oz',
@@ -20,12 +22,17 @@ export const Water = ({ water, setWater, isMass, setIsMass }: WaterProps) => {
         'g',
         isMass ? 'active' : '',
     ]);
+    const classes = cls([
+        'water',
+        selected === 'water' ? 'selected' : ''
+    ])
     return (
-        <section className="water">
+        <section className={classes} >
             <input
                 type="tel"
                 className="input--water"
                 value={water}
+                onClick={(e) => setSelected('water')}
                 onChange={(e) => setWater(parseAmountInput(999, e))} />
             <div className="value">
                 <div className="glass">

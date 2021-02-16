@@ -1,0 +1,45 @@
+
+@keyframes done {
+    0% {
+      opacity: 0;
+    }
+    9% {
+      opacity: 1;
+    }
+    35% {
+      opacity: 1;
+      background-color: rgba(245, 164, 115, .15);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  
+  .overlay {
+    width: calc(100% - 22px);
+    /* TODO: not sure why this isn't 100% */
+    height: calc(94% - 23px);
+    position: absolute;
+    border: solid 11px rgb(245, 164, 115);
+    border-top-width: 8px;
+    opacity: 0;
+    z-index: 20;
+    pointer-events: none;
+    &.done {
+      animation: done 8.0s forwards;
+      pointer-events: auto;
+    }
+    &.out {
+      animation: out 300ms;
+    }
+  }

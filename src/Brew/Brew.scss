@@ -16,15 +16,27 @@
         align-items: baseline;
         width: 9.5rem;
         margin-bottom: 1rem;
+        label {
+            border-bottom: solid 2px transparent;
+        }
     }
     .count {
         display: inline-block;
         margin-left: .15ch;
         font-size: 5rem;
         color: $text-active;
+        position: relative;
 
         &.number-1 {
-            margin-right: .15ch;
+            margin-right: .25ch;
+            position: relative;
+            top: 2px;
         }
+    }
+}
+
+.selected {
+    .text label {
+       border-color: $action-active;
     }
 }
