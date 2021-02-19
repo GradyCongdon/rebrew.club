@@ -25,6 +25,7 @@ main {
 
   display: grid;
   grid-template-areas: 
+    'notch notch'
     'controls controls'
     'name name'
     'color weight'
@@ -35,7 +36,7 @@ main {
     'gap3 gap3'
   ;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2% 14% 22% 1% 22% 4% 22% 5%;
+  grid-template-rows: 2% 2% 14% 22% 1% 22% 4% 22% 5%;
   background-color: $bg;
   position: relative;
   @media screen and (min-width: 425px) {
@@ -46,7 +47,7 @@ main {
   }
 
   &.pwa {
-    grid-template-rows: 2% 21% 20% 1% 28% 1% 28% 2%;
+    grid-template-rows: 4vh 2vh 17vh 20vh 0vh 28vh 0vh 28vh 2vh;
   }
 }
 input,
@@ -130,3 +131,12 @@ input {
       color: $text-active;
   }
 }
+
+// .selected {
+//   &.water,
+//   &.weight {
+//     z-index: 2;
+//     position: fixed;
+//     bottom: 25vh;
+//   }
+// }
