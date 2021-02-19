@@ -30,7 +30,7 @@ export const Water = ({ water, setWater, isMass, setIsMass, selected, setSelecte
         <section className={classes} >
             <input
                 type="tel"
-                className="input--water"
+                className="input--water glass"
                 value={water}
                 onClick={(e) => setSelected('water')}
                 onChange={(e) => setWater(parseAmountInput(999, e))} />

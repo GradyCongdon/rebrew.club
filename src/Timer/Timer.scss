@@ -3,6 +3,9 @@
 .timer {
     width: 150px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .input--timer {
@@ -55,8 +58,19 @@
     top: -2px;
 }
 
-.selected {
-    .capsule {
+.selected-min {
+    .min.capsule {
         border-color: $action-active;
+    }
+    .sec.capsule {
+        border-top-color: transparent;
+    }
+}
+.selected-sec {
+    .sec.capsule {
+        border-color: $action-active;
+    }
+    .min.capsule {
+        border-bottom-color: transparent;
     }
 }

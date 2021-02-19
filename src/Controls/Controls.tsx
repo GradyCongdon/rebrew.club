@@ -1,13 +1,17 @@
 import React from 'react';
 import './Controls.scss';
 
-export const Controls = () => {
+interface ControlsProps {
+    onNew: any;
+}
+
+export const Controls = ({ onNew }: ControlsProps) => {
     return (
         <section className="controls">
             <button>
                 <span> old </span>
             </button>
-            <button>
+            <button onClick={onNew}>
                 <span> new </span>
             </button>
         </section>

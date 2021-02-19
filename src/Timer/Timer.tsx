@@ -27,7 +27,8 @@ export const Timer = ({ minutes, setMinutes, seconds, setSeconds, selected, setS
     const $sec = values(seconds);
     const classes = cls([
         'timer',
-        selected === 'timer' ? 'selected' : ''
+        selected === 'minutes' ? 'selected-min' : '',
+        selected === 'seconds' ? 'selected-sec' : ''
     ])
     return (
         <section className={classes} >
@@ -36,7 +37,7 @@ export const Timer = ({ minutes, setMinutes, seconds, setSeconds, selected, setS
                     type="tel"
                     className="input--timer"
                     value={minutes}
-                    onClick={(e) => setSelected('timer')}
+                    onClick={(e) => setSelected('minutes')}
                     onChange={(e) => setMinutes(parseAmountInput(9, e))} />
                 <label className="label">
                     min
@@ -51,7 +52,7 @@ export const Timer = ({ minutes, setMinutes, seconds, setSeconds, selected, setS
                     type="tel"
                     className="input--timer"
                     value={seconds}
-                    onClick={(e) => setSelected('timer')}
+                    onClick={(e) => setSelected('seconds')}
                     onChange={(e) => setSeconds(parseAmountInput(59, e))} />
                 <label className="label">
                     sec

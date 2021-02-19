@@ -30,6 +30,21 @@ function App() {
   const [seconds, setSeconds] = useState(15);
   const [lastTime, setLastTime] = useState(seconds);
 
+  const reset = () => {
+    setName('Tea');
+    setColor('');
+    setSelected('');
+    setBrew(0);
+    setWater(0);
+    setTemperature(0);
+    setWeight(0);
+    setSeconds(0);
+    setMinutes(0);
+    setIsDone(false);
+    setIsTicking(false);
+    setIsOut(false);
+  }
+
   const setBrew = (count: number) => {
     setIsTicking(!isTicking)
     setIsDone(false);
@@ -69,8 +84,8 @@ function App() {
 
 
   return (
-    <main >
-      <Controls />
+    <main className="pwa" >
+      <Controls onNew={reset} />
       <Name selected={selected} setSelected={setSelected} name={name} setName={setName} />
       <Temperature selected={selected} setSelected={setSelected} temperature={temperature} setTemperature={setTemperature} isCelsius={isCelsius} setIsCelsius={setIsCelsius} />
       <Color selected={selected} setSelected={setSelected} color={color} setColor={setColor} />

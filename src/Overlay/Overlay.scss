@@ -27,8 +27,7 @@
   
   .overlay {
     width: calc(100% - 22px);
-    /* TODO: not sure why this isn't 100% */
-    height: calc(94% - 23px);
+    height: calc(100% - 22px);
     position: absolute;
     border: solid 11px rgb(245, 164, 115);
     border-top-width: 8px;
