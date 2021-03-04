@@ -10,6 +10,10 @@
     .name__name {
         font-size: 2.5rem;
         border-bottom: 1px solid $text-active;
+        min-height: 42px;
+    }
+    .input--text {
+        min-height: 42px;
     }
 }
 

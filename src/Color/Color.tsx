@@ -28,6 +28,11 @@ export const Color = ({ color, setColor: _setColor, selected, setSelected }: Col
     }
     return (
         <section className={classes} >
+            <button className={colorClass('pu-erh', color)} onClick={() => setColor('pu-erh')} >
+                <span className="text">
+                    Pu-erh
+                </span>
+            </button>
             <button className={colorClass('black', color)} onClick={() => setColor('black')} >
                 <span className="text">
                     Black
