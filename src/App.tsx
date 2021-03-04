@@ -19,7 +19,7 @@ function App() {
   const [name, setName] = useState('Tea');
   const [selected, setSelected] = useState('');
   const [temperature, setTemperature] = useState(0);
-  const [isCelsius, setIsCelsius] = useState(true);
+  const [isCelsius, setIsCelsius] = useState(false);
   const [color, setColor] = useState('');
   const [weight, setWeight] = useState(0);
   const [isMassWeight, setIsMassWeight] = useState(true);
