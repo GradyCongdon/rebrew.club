@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { cls, parseAmountInput } from '../utils';
+import { cls, parseAmountInput, scrollInput } from '../utils';
 import './Weight.scss';
 
 interface WeightProps {
@@ -28,13 +28,18 @@ export const Weight = ({ weight, setWeight, isMass, setIsMass, selected, setSele
         selected === 'weight' ? 'selected' : ''
     ]);
 
+    const onClick = (e: any) => {
+        scrollInput(e);
+        setSelected('weight');
+    }
+
     return (
         <section className={classes} >
             <input
                 type="tel"
                 className="input--weight"
                 value={weight}
-                onClick={(e) => setSelected('weight')}
+                onClick={onClick}
                 onChange={(e) => setWeight(parseAmountInput(99, e))} />
             <div className="diamond">
                 <button className={tspClasses} onClick={() => setIsMass(false)}>tsp</button>

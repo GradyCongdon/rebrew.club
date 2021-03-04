@@ -16,3 +16,10 @@ export const parseAmountInput = (max: number, e: any) => {
 }
 
 export const cls = (classes: string[]): string => classes.join(' ');
+
+export const scrollInput = (e: any) => {
+    window.scrollTo({
+        top: e.currentTarget.getBoundingClientRect().top,
+        behavior: 'smooth'
+    });
+}

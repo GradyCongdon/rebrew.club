@@ -6,6 +6,10 @@
     align-items: center;
   
     padding: 0 .25rem;
+
+    .old {
+      color: lightgrey;;
+    }
   
     button {
       -webkit-appearance: none;
@@ -36,6 +40,18 @@
       span {
         display: inline-block;
         margin-top: 2rem;
+        pointer-events: none;
+      }
+    }
+  }
+
+  .pwa {
+    .controls {
+      button {
+        top: 1rem;
+      }
+      span {
+        margin-top: 0;
         pointer-events: none;
       }
     }

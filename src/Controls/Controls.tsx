@@ -8,7 +8,7 @@ interface ControlsProps {
 export const Controls = ({ onNew }: ControlsProps) => {
     return (
         <section className="controls">
-            <button>
+            <button className="old" disabled>
                 <span> old </span>
             </button>
             <button onClick={onNew}>
