@@ -18,15 +18,25 @@ export const Name = ({ name, setName, selected, setSelected }: NameProps) => {
         start ? 'start' : ''
     ]);
 
+    const onClick = () => {
+        setSelected('name');
+    }
+
     return (
         <section className={classes}>
             <input
                 type="text"
                 className="input--text"
-                onClick={() => setSelected('name')}
+                placeholder="Tea"
+                value={name}
+                onClick={onClick}
                 onChange={(e) => {
-                    setStart(false);
-                    setName(e.currentTarget.value)
+                    let val = e.currentTarget.value;
+                    if (start) {
+                        setStart(false);
+                        val = val.replace('Tea', '');
+                    }
+                    setName(val);
                 }} />
             <h1 className="name__name">{name}</h1>
         </section>

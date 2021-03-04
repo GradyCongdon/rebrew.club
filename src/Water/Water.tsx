@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { cls, parseAmountInput } from '../utils';
+import { cls, parseAmountInput, scrollInput } from '../utils';
 import './Water.scss';
 
 interface WaterProps {
@@ -26,13 +26,18 @@ export const Water = ({ water, setWater, isMass, setIsMass, selected, setSelecte
         'water',
         selected === 'water' ? 'selected' : ''
     ])
+
+    const onClick = (e: any) => {
+        scrollInput(e);
+        setSelected('water');
+    }
     return (
         <section className={classes} >
             <input
                 type="tel"
                 className="input--water glass"
                 value={water}
-                onClick={(e) => setSelected('water')}
+                onClick={onClick}
                 onChange={(e) => setWater(parseAmountInput(999, e))} />
             <div className="value">
                 <div className="glass">

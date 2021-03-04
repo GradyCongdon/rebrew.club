@@ -1,5 +1,5 @@
 import React from 'react';
-import { cls, parseAmountInput } from '../utils';
+import { cls, parseAmountInput, scrollInput } from '../utils';
 import './Timer.scss'
 
 
@@ -44,6 +44,16 @@ export const Timer = ({ time, setTime, selected, setSelected }: TimerProps) => {
         selected === 'minutes' ? 'selected-min' : '',
         selected === 'seconds' ? 'selected-sec' : ''
     ])
+
+    const onClickMinutes = (e: any) => {
+        scrollInput(e);
+        setSelected('minutes');
+    }
+
+    const onClickSeconds = (e: any) => {
+        scrollInput(e);
+        setSelected('seconds');
+    }
     return (
         <section className={classes} >
             <section className="capsule min">
@@ -51,7 +61,7 @@ export const Timer = ({ time, setTime, selected, setSelected }: TimerProps) => {
                     type="tel"
                     className="input--timer"
                     value={min}
-                    onClick={(e) => setSelected('minutes')}
+                    onClick={onClickMinutes}
                     onChange={(e) => setMinutes(parseAmountInput(9, e))} />
                 <label className="label">
                     min
@@ -66,7 +76,7 @@ export const Timer = ({ time, setTime, selected, setSelected }: TimerProps) => {
                     type="tel"
                     className="input--timer"
                     value={sec}
-                    onClick={(e) => setSelected('seconds')}
+                    onClick={onClickSeconds}
                     onChange={(e) => setSeconds(parseAmountInput(59, e))} />
                 <label className="label">
                     sec

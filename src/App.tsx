@@ -11,6 +11,7 @@ import { Weight } from './Weight';
 import { Water } from './Water';
 
 import './App.scss';
+import { cls } from './utils';
 
 const isPWA = () => (window.matchMedia('(display-mode: standalone)').matches) || ((window.navigator as any).standalone) || document.referrer.includes('android-app://');
 
@@ -83,19 +84,26 @@ function App() {
     }
   }, [isDone, isOut]);
 
+  const classes = cls([
+    isPWA() ? 'pwa' : '',
+    selected ? 'selecting' : '',
+  ]);
 
-  const pwa = isPWA() ? 'pwa' : '';
 
   return (
-    <main className={pwa} >
+    <main className={classes} >
       <Controls onNew={reset} />
       <Name selected={selected} setSelected={setSelected} name={name} setName={setName} />
+
       <Temperature selected={selected} setSelected={setSelected} temperature={temperature} setTemperature={setTemperature} isCelsius={isCelsius} setIsCelsius={setIsCelsius} />
       <Color selected={selected} setSelected={setSelected} color={color} setColor={setColor} />
+
       <Weight selected={selected} setSelected={setSelected} weight={weight} setWeight={setWeight} isMass={isMassWeight} setIsMass={setIsMassWeight} />
       <Water selected={selected} setSelected={setSelected} water={water} setWater={setWater} isMass={isMassWater} setIsMass={setIsMassWater} />
-      <Brew selected={selected} setSelected={setSelected} isTicking={isTicking} brew={brew} setBrew={setBrew} />
+
       <Timer selected={selected} setSelected={setSelected} time={time} setTime={setTime} />
+      <Brew selected={selected} setSelected={setSelected} isTicking={isTicking} brew={brew} setBrew={setBrew} />
+
       <Overlay isDone={isDone} isOut={isOut} setIsOut={setIsOut} setTime={setTime} lastTime={lastTime} />
     </main>
   );
