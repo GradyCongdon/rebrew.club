@@ -10,8 +10,11 @@ import { Overlay } from './Overlay';
 import { Weight } from './Weight';
 import { Water } from './Water';
 
+import { History, mockHistory } from './History';
+
 import './App.scss';
 import { cls } from './utils';
+import { TeaSession } from './History/TeaSession';
 
 const isPWA = () => (window.matchMedia('(display-mode: standalone)').matches) || ((window.navigator as any).standalone) || document.referrer.includes('android-app://');
 
@@ -32,6 +35,16 @@ function App() {
   const [time, setTime] = useState(15);
   const [lastTime, setLastTime] = useState(time);
   const [autoBrewTime, setAutoBrewTime] = useState(true);
+  const [page, setPage] = useState('main');
+  const [sessions, setSessions] = useState(mockHistory.sessions as any);
+
+  const onOld = () => {
+    setPage('history');
+  }
+
+  const onBack = () => {
+    setPage('main');
+  }
 
   const reset = () => {
     setName('Tea');
@@ -85,14 +98,21 @@ function App() {
   }, [isDone, isOut]);
 
   const classes = cls([
+    'main',
     isPWA() ? 'pwa' : '',
     selected ? 'selecting' : '',
   ]);
 
+  if (page === 'history') {
+    return (
+      <History sessions={sessions} onBack={onBack} />
+    );
+  }
+
 
   return (
     <main className={classes} >
-      <Controls onNew={reset} />
+      <Controls onOld={onOld} onNew={reset} />
       <Name selected={selected} setSelected={setSelected} name={name} setName={setName} />
 
       <Temperature selected={selected} setSelected={setSelected} temperature={temperature} setTemperature={setTemperature} isCelsius={isCelsius} setIsCelsius={setIsCelsius} />

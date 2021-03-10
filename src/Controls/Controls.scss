@@ -7,13 +7,13 @@
   
     padding: 0 .25rem;
 
-    .old {
-      color: lightgrey;;
-    }
-  
     button {
+      span {
+        color: lightgrey;
+      }
       -webkit-appearance: none;
       appearance: none;
+
 
       display: flex;
       justify-content: center;
