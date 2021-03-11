@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export interface BrewSessionType {
     brewNumber: number;
     time: number;
@@ -8,8 +7,8 @@ export interface BrewSessionType {
     temperatureUnit: string;
     water: number;
     waterUnit: string;
-    mass: number;
-    massUnit: string;
+    weight: number;
+    weightUnit: string;
 }
 
 interface BrewSessionProps {
@@ -32,7 +31,7 @@ export const mockBrews = [
         brewNumber: 2,
         time: 30,
         temperature: 195,
-        temperatureUnit: '°F',
+        temperatureUnit: 'F',
         water: 110,
         waterUnit: 'g',
         mass: 9,
@@ -43,13 +42,14 @@ export const mockBrews = [
 
 
 export const BrewSession = ({ brew }: BrewSessionProps) => {
-    const { brewNumber, time, temperature, water } = brew;
+    const { brewNumber, time, temperature, water, weight, temperatureUnit, waterUnit, weightUnit } = brew;
     return (
         <div className="brew-session">
             <span className="session-brew-number">{brewNumber}</span>
-            <span className="session-time">{time}</span>
-            <span className="session-temperature">{temperature}</span>
-            <span className="session-water">{water}</span>
+            <span className="session-time">{time}s</span>
+            <span className="session-weight">{weight}{weightUnit}</span>
+            <span className="session-temperature">{temperature}°{temperatureUnit}</span>
+            <span className="session-water">{water}{waterUnit}</span>
         </div>
     );
 };

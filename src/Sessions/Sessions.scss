@@ -1,0 +1,45 @@
+.tea-session {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 3ch;
+        margin-bottom: 1.5ch;
+        padding-top: 1ch;
+        border-bottom: 1px solid #f7f7f7;
+        .name {
+            font-size: 1.75rem;
+            margin-right: .5ch;
+        }
+        .id {
+            color: grey;
+            font-size: 1.1rem;
+        }
+    }
+
+    .labels,
+    .brew-session {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+        grid-template-rows: 1fr;
+        justify-items: center;
+        grid-gap: 1ch;
+    }
+    .labels {
+        font-size: .9rem;
+        font-style: italic;
+        color: grey;
+        margin-bottom: .5ch;
+    }
+    .brew-session {
+        margin-bottom: 1ch;
+    }
+    // .session-brew-number,
+    // .labels-brew-number {
+    //     justify-self: flex-start;
+    // }
+}

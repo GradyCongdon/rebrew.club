@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrewSession, BrewSessionType, mockBrews } from "./BrewSession";
+import './Sessions.scss';
 
 export interface TeaSession {
-    id: string;
+    id: number;
     name: string;
     color: string;
     brews: BrewSessionType[];
@@ -13,14 +14,16 @@ interface TeaSessionProps {
 }
 
 export const mockTeaSession = {
-    id: '001',
+    id: 1,
     name: 'Hairy Crab',
     color: 'oolong',
     brews: mockBrews,
 }
 
+
 export const TeaSession = ({ session }: TeaSessionProps) => {
-    const { id, name, color, brews } = session;
+    const { id: _id, name, color, brews } = session;
+    const id = _id.toString().padStart(3, '0');
     const $brews = brews.map(b => <BrewSession key={`${id}-${b.brewNumber}`} brew={b} />);
     return (
         <article className="tea-session">
@@ -37,6 +40,7 @@ export const TeaSession = ({ session }: TeaSessionProps) => {
             <div className="labels">
                 <span className="labels-brew-number">brew</span>
                 <span>time</span>
+                <span>weight</span>
                 <span>temperature</span>
                 <span>water</span>
             </div>
