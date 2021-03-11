@@ -27,7 +27,7 @@ export const History = ({ onBack }: HistoryProps) => {
         <article className="history">
             <section className="controls">
                 <button className="back" onClick={onBack}>
-                    <span> now &rsaquo;</span>
+                    <span> now </span>
                 </button>
                 {/* <button onClick={onNew}>
                     <span> new </span>

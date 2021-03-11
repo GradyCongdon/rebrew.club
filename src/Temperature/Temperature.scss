@@ -25,8 +25,9 @@
         .amount {
             font-size: 4.5rem;
             position: relative;
-            left: 4px;
-            bottom: 4px;
+            // TODO: Weird optical align hack
+            left: 2px;
+            bottom: 5px;
             pointer-events: none;
         }
     }
