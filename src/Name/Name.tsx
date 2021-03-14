@@ -10,7 +10,7 @@ interface NameProps {
 }
 
 export const Name = ({ name, setName, selected, setSelected }: NameProps) => {
-    const [start, setStart] = useState(true);
+    const start = name === 'Tea'; 
     const classes = cls([
         'f-cc',
         'name',
@@ -33,7 +33,6 @@ export const Name = ({ name, setName, selected, setSelected }: NameProps) => {
                 onChange={(e) => {
                     let val = e.currentTarget.value;
                     if (start) {
-                        setStart(false);
                         val = val.replace('Tea', '');
                     }
                     setName(val);

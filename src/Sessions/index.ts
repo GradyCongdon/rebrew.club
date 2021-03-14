@@ -25,6 +25,12 @@ export function getSessions(): TeaSession[] {
     return sessions;
 }
 
+export function getLastSession(): TeaSession {
+    const json = localStorage.getItem(key) || init();
+    const sessions = JSON.parse(json);
+    return sessions.pop();
+}
+
 export function newSession(tea: TeaSessionCurrent): TeaSession[] {
     const previous = getSessions();
     const teaSession = {
@@ -70,7 +76,7 @@ export function storeBrew(current: TeaSessionCurrent, brew: BrewSessionType): Te
 function getSessionBrews(current: TeaSessionCurrent) {
     const sessions = getSessions();
     const i = current.id - 1;
-    const brews = sessions[i].brews;
+    const brews = sessions[i]?.brews || [];
     return brews;
 }
 

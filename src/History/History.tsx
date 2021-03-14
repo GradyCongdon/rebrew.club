@@ -22,7 +22,7 @@ export const mockHistory = {
 
 export const History = ({ onBack }: HistoryProps) => {
     const sessions = getSessions();
-    const $entries = sessions.map(e => <TeaSession key={e.id} session={e} />);
+    const $entries = sessions.sort((a, b) => b.id - a.id).map(e => <TeaSession key={e.id} session={e} />);
     return (
         <article className="history">
             <section className="controls">

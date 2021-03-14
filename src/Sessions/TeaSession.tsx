@@ -30,11 +30,13 @@ export const TeaSession = ({ session }: TeaSessionProps) => {
             <div className="header">
                 <span>
                     <span className="name">
-                        {name}
-                    </span>- {color}
+                        {name === 'Tea' ? <span className="mystery">???</span> : name}
+                    </span>{color ? '-' : null} {color}
                 </span>
                 <span className="id">
-                    ({id})
+                    <span className="light">(</span>
+                    {id}
+                    <span className="light">)</span>
                 </span>
             </div>
             <div className="labels">

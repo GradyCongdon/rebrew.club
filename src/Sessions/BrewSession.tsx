@@ -46,10 +46,22 @@ export const BrewSession = ({ brew }: BrewSessionProps) => {
     return (
         <div className="brew-session">
             <span className="session-brew-number">{brewNumber}</span>
-            <span className="session-time">{time}s</span>
-            <span className="session-weight">{weight}{weightUnit}</span>
-            <span className="session-temperature">{temperature}°{temperatureUnit}</span>
-            <span className="session-water">{water}{waterUnit}</span>
+            <span className="session-time">
+                {time}
+                <span className="unit">s</span>
+            </span>
+            <span className="session-weight">
+                {weight}
+                <span className="unit">{weightUnit}</span>
+            </span>
+            <span className="session-temperature">
+                {temperature}
+                <span className="unit">°{temperatureUnit}</span>
+            </span>
+            <span className="session-water">
+                {water}
+                <span className="unit">{waterUnit}</span>
+            </span>
         </div>
     );
 };

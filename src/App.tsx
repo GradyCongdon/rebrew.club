@@ -11,13 +11,13 @@ import { Weight } from './Weight';
 import { Water } from './Water';
 
 import { History } from './History';
-import { getSessions, newSession, storeSession, storeBrew } from './Sessions';
+import { getLastSession, storeSession, storeBrew } from './Sessions';
 
 import './App.scss';
 import { cls } from './utils';
 
 const isPWA = () => (window.matchMedia('(display-mode: standalone)').matches) || ((window.navigator as any).standalone) || document.referrer.includes('android-app://');
-const lastTea = getSessions()[0];
+const lastTea = getLastSession();
 const lastBrew = lastTea.brews[lastTea.brews.length - 1] || {};
 
 function App() {
@@ -122,17 +122,12 @@ function App() {
   }, [isDone, isOut]);
 
   useEffect(() => {
-    if (id === 1 && brewNumber === 0) {
+    if (brewNumber === 0) {
       return;
     }
-    if (brewNumber === 0) {
-      newSession(session);
-    } else {
-      storeSession(session);
-      storeBrew(session, brew);
-    }
+    storeSession(session);
+    storeBrew(session, brew);
   }, [
-    id,
     brewNumber,
   ]);
 
@@ -169,6 +164,7 @@ function App() {
 
         <Timer selected={selected} setSelected={setSelected} time={time} setTime={setTime} />
         <Brew selected={selected} setSelected={setSelected} isTicking={isTicking} brew={brewNumber} setBrew={setBrew} />
+        <div className="sip">sip</div>
       </article>
 
       <Overlay isDone={isDone} isOut={isOut} setIsOut={setIsOut} setTime={setTime} lastTime={lastTime} />
