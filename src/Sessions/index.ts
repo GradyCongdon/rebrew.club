@@ -80,5 +80,9 @@ function getSessionBrews(current: TeaSessionCurrent) {
     return brews;
 }
 
+export function clearSessions() {
+    localStorage.removeItem(key);
+}
+
 
 type TeaSessionCurrent = Pick<TeaSession, 'id' | 'name' | 'color'>;

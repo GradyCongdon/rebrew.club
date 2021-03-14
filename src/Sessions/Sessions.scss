@@ -1,12 +1,14 @@
+@import '../theme.scss';
+
 .tea-session {
     display: flex;
     flex-direction: column;
     width: 100%;
     .light {
-        color: lightgrey;
+        color: $dim;
     }
     .mystery {
-        color: lightgrey;
+        color: $dim;
         font-size: 1.4rem;
     }
 
@@ -17,13 +19,13 @@
         margin-top: 3ch;
         margin-bottom: 1.5ch;
         padding-top: 1ch;
-        border-bottom: 1px solid #f7f7f7;
+        border-bottom: 1px solid $whisper;
         .name {
             font-size: 1.75rem;
             margin-right: .5ch;
         }
         .id {
-            color: grey;
+            color: $dim;
             font-size: 1.1rem;
         }
     }
@@ -36,14 +38,14 @@
         justify-items: center;
         .unit {
             font-size: .8rem;
-            color: grey;
+            color: $dim;
             margin-left: 2px;
         }
     }
     .labels {
         font-size: .9rem;
         font-style: italic;
-        color: grey;
+        color: $dim;
         margin-bottom: .5ch;
     }
     .brew-session {

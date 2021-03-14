@@ -19,6 +19,7 @@ import { cls } from './utils';
 const isPWA = () => (window.matchMedia('(display-mode: standalone)').matches) || ((window.navigator as any).standalone) || document.referrer.includes('android-app://');
 const lastTea = getLastSession();
 const lastBrew = lastTea.brews[lastTea.brews.length - 1] || {};
+const nextBrewTime = (t: number) => t + 15;
 
 function App() {
   const [id, setId] = useState(lastTea.id);
@@ -31,7 +32,7 @@ function App() {
   const [isMassWeight, setIsMassWeight] = useState(lastBrew.weightUnit === 'g');
   const [water, setWater] = useState(lastBrew.water || 0);
   const [isMassWater, setIsMassWater] = useState(lastBrew.waterUnit === 'g');
-  const [time, setTime] = useState(lastBrew.time || 15);
+  const [time, setTime] = useState(lastBrew.time || nextBrewTime(0));
   const [lastTime, setLastTime] = useState(time);
 
   const [page, setPage] = useState('main');
@@ -61,6 +62,9 @@ function App() {
 
 
   const onOld = () => {
+    if (id === 1 && brewNumber === 0) {
+      return;
+    }
     setPage('history');
   }
 
@@ -76,7 +80,7 @@ function App() {
     setWater(0);
     setTemperature(0);
     setWeight(0);
-    setTime(autoBrewTime ? 15 : 0);
+    setTime(autoBrewTime ? nextBrewTime(0) : 0);
     setIsDone(false);
     setIsTicking(false);
     setIsOut(false);
@@ -88,7 +92,7 @@ function App() {
     setIsDone(false);
     setIsOut(false);
     if (autoBrewTime) {
-      setLastTime(time + 15);
+      setLastTime(nextBrewTime(time));
     }
     return _setBrew(count);
   }
@@ -147,7 +151,6 @@ function App() {
       </main>
     );
   }
-
 
 
   return (
