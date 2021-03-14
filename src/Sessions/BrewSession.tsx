@@ -40,6 +40,17 @@ export const mockBrews = [
 ];
 
 
+const datum = (amount: number, unit: string) => {
+    if (!amount) {
+        return (<span>-</span>);
+    }
+    return (
+        <>
+            {amount}
+            <span className="unit">{unit}</span>
+        </>
+    );
+}
 
 export const BrewSession = ({ brew }: BrewSessionProps) => {
     const { brewNumber, time, temperature, water, weight, temperatureUnit, waterUnit, weightUnit } = brew;
@@ -47,20 +58,16 @@ export const BrewSession = ({ brew }: BrewSessionProps) => {
         <div className="brew-session">
             <span className="session-brew-number">{brewNumber}</span>
             <span className="session-time">
-                {time}
-                <span className="unit">s</span>
+                {datum(time, 's')}
             </span>
             <span className="session-weight">
-                {weight}
-                <span className="unit">{weightUnit}</span>
+                {datum(weight, weightUnit)}
             </span>
             <span className="session-temperature">
-                {temperature}
-                <span className="unit">°{temperatureUnit}</span>
+                {datum(temperature, `°${temperatureUnit}`)}
             </span>
             <span className="session-water">
-                {water}
-                <span className="unit">{waterUnit}</span>
+                {datum(water, waterUnit)}
             </span>
         </div>
     );
