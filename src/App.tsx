@@ -9,6 +9,7 @@ import { Name } from './Name';
 import { Overlay } from './Overlay';
 import { Weight } from './Weight';
 import { Water } from './Water';
+import { Draw } from './Draw';
 
 import { History } from './History';
 import { getLastSession, storeSession, storeBrew } from './Sessions';
@@ -97,8 +98,17 @@ function App() {
     return _setBrew(count);
   }
 
+  const startBrewing = () => {
+    if (!isTicking) {
+      setSelected('brew');
+      const nextNumber = brewNumber + 1;
+      setBrew(nextNumber);
+      setPage('draw');
+    }
+  }
 
-  useEffect(() => {
+
+  const tick = () => {
     if (!isTicking) {
       return () => { };
     }
@@ -114,26 +124,35 @@ function App() {
     return () => {
       clearTimeout(timer);
     }
+
+  }
+  useEffect(() => {
+    tick();
   }, [isTicking, time]);
 
-  useEffect(() => {
+  const removeOverlay = () => {
     if (isDone && isOut) {
       setTimeout(() => {
         setIsDone(false)
         setSelected('overlay')
       }, 200);
     }
+  }
+  useEffect(() => {
+    removeOverlay()
   }, [isDone, isOut]);
 
-  useEffect(() => {
+
+  const store = () => {
     if (brewNumber === 0) {
       return;
     }
     storeSession(session);
     storeBrew(session, brew);
-  }, [
-    brewNumber,
-  ]);
+  }
+  useEffect(() => {
+    store();
+  }, [brewNumber]);
 
 
   const classes = cls([
@@ -152,10 +171,27 @@ function App() {
     );
   }
 
+  if (page === 'draw') {
+    return (
+      <main className="draw">
+        <article>
+          <Draw
+            start={() => { }}
+            back={() => setPage('main')}
+          />
+          <Timer selected={selected} setSelected={setSelected} time={time} setTime={setTime} />
+          <Overlay isDone={isDone} isOut={isOut} setIsOut={setIsOut} setTime={setTime} lastTime={lastTime} />
+        </article>
+      </main>
+    );
+  };
 
   return (
     <main >
-      <article className={classes} >
+      <article className={classes}>
+        <p className="pwa">
+          {isPWA() ? 'pwa' : 'web'}
+        </p>
         <Controls onOld={onOld} onNew={reset} />
         <Name selected={selected} setSelected={setSelected} name={name} setName={setName} />
 
@@ -166,7 +202,7 @@ function App() {
         <Water selected={selected} setSelected={setSelected} water={water} setWater={setWater} isMass={isMassWater} setIsMass={setIsMassWater} />
 
         <Timer selected={selected} setSelected={setSelected} time={time} setTime={setTime} />
-        <Brew selected={selected} setSelected={setSelected} isTicking={isTicking} brew={brewNumber} setBrew={setBrew} />
+        <Brew selected={selected} brew={brewNumber} onClick={startBrewing} />
         <div className="sip">sip</div>
       </article>
 

@@ -4,24 +4,16 @@ import './Brew.scss';
 
 interface BrewProps {
     brew: number;
-    setBrew: any;
-    selected: string
-    setSelected: any
-    isTicking: boolean
+    selected: string;
+    onClick: any;
 }
 
-export const Brew = ({ brew, setBrew, selected, setSelected, isTicking }: BrewProps) => {
+export const Brew = ({ brew, selected, onClick }: BrewProps) => {
     const classes = cls([
         'brew',
         selected === 'brew' ? 'selected' : '',
     ]);
     const number = `number-${brew}`;
-    const onClick = () => {
-        if (!isTicking) {
-            setSelected('brew');
-            setBrew(++brew);
-        }
-    }
     return (
         <section className={classes}>
             <button onClick={onClick}>

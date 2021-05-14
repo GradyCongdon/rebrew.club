@@ -1,7 +1,24 @@
-@import './reset.css';
-@import './theme.scss';
+@import "./reset.css";
+@import "./theme.scss";
 
-@import url('https://fonts.googleapis.com/css2?family=Oranienbaum&family=Prompt:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oranienbaum&family=Prompt:wght@300&display=swap");
+
+
+@-webkit-keyframes glow {
+    0%{background-position:9% 0%}
+    50%{background-position:92% 100%}
+    100%{background-position:9% 0%}
+}
+@-moz-keyframes glow {
+    0%{background-position:9% 0%}
+    50%{background-position:92% 100%}
+    100%{background-position:9% 0%}
+}
+@keyframes glow { 
+    0%{background-position:9% 0%}
+    50%{background-position:92% 100%}
+    100%{background-position:9% 0%}
+}
 
 
 
@@ -9,14 +26,15 @@ html {
   width: 100%;
   height: 100%;
 
-  font-family: 'Oranienbaum', serif;
+  font-family: "Oranienbaum", serif;
   font-size: 16px;
   @media screen and (min-width: 425px) {
-    background-color: $bg-outer;
+    // background-color: $bg-outer;
   }
+  overflow: hidden;
 }
 body {
-  background-color: $bg;
+  // background-color: $bg;
   color: $text-active;
   @media screen and (min-width: 425px) {
     height: 100vh;
@@ -24,7 +42,6 @@ body {
     margin: 0 auto;
   }
 }
-
 main {
   background-color: $bg;
   position: relative;
@@ -36,16 +53,16 @@ main {
 .main {
   display: grid;
   grid-template-areas: 
-    'notch notch'
-    'controls controls'
-    'name name'
-    'color weight'
-    'gap1 gap1'
-    'temp water'
-    'gap2 gap2'
-    'timer brew'
-    'gap3 gap3'
-  ;
+    "notch notch"
+    "controls controls"
+    "name name"
+    "color weight"
+    "gap1 gap1"
+    "temp water"
+    "gap2 gap2"
+    "timer brew"
+    "gap3 gap3";
+ 
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 2% 2% 14% 22% 0 22% 2% 22% 5%;
   overflow: hidden;
@@ -54,9 +71,10 @@ main {
   }
 
   &.pwa {
-    grid-template-rows: 4vh 2vh 17vh 20vh 2vh 26vh 0 28vh 2vh;
+    grid-template-rows: 4vh 2vh 17vh 18vh 1vh 26vh 0 28vh 2vh;
   }
 }
+
 input,
 button {
   -webkit-appearance: none;
@@ -65,10 +83,13 @@ button {
   background: none;
   font-family: inherit;;
   color: inherit;
-  &:focus {
-    outline: none;
-  }
 }
+
+input:focus,
+button:focus {
+  outline: none;
+}
+
 input {
   opacity: 0;
   position: absolute;
@@ -155,4 +176,41 @@ input {
   left: 0;
   right: 0;
   color: $whisper-accent;
+}
+
+
+
+
+
+.react-p5 {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+
+  canvas,
+  .p5canvas {
+    border: solid 1px lightgrey;
+    margin: 0 auto;
+    margin-top: 100px
+  }
+}
+
+
+.subject {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.draw {
+  .timer {
+      transform: scale(0.5);
+  }
+}
+
+
+p.pwa {
+  position: absolute;
+  top: 95vh;
+  left: 89vw;
+  color: rgb(233, 233, 233);
 }
