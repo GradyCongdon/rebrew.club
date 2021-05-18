@@ -41,6 +41,7 @@ body {
     width: 425px;
     margin: 0 auto;
   }
+  overflow: hidden;
 }
 main {
   background-color: $bg;
@@ -71,7 +72,7 @@ main {
   }
 
   &.pwa {
-    grid-template-rows: 4vh 2vh 17vh 18vh 1vh 26vh 0 28vh 2vh;
+    grid-template-rows: 2vh 2vh 17vh 20vh 1vh 24vh 0 28vh 2vh;
   }
 }
 
@@ -129,7 +130,7 @@ input {
   min-height: 100%;
   align-self: center;
   .pwa & {
-    transform: scale(.85);
+    transform: scale(.75);
   }
 }
 .weight {

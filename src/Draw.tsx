@@ -5,6 +5,9 @@ import p5Types from "p5";
 interface DrawProps {
     start: any;
     back: any;
+    id: string;
+    label: string;
+    isDone: boolean;
 }
 
 const WIDTH = 375;
@@ -20,6 +23,8 @@ const BUTTON_LEFT = (WIDTH - CX) / 2;
 let p6: any;
 
 export const Draw: React.FC<DrawProps> = (props: DrawProps) => {
+    const { id, label } = props;
+    const filename = `${label}.png`;
 
     const setup = (p5: p5Types, canvasParentRef: Element) => {
         p6 = p5;
@@ -32,24 +37,36 @@ export const Draw: React.FC<DrawProps> = (props: DrawProps) => {
 
         const clear = p5.createButton('clear');
         clear.position(CX - BUTTON_WIDTH, BUTTON_TOP);
-        clear.mousePressed(() => p6.clear());
+        clear.mousePressed(() => p5.clear());
 
         const back = p5.createButton('back');
-        back.position(BUTTON_LEFT, BUTTON_TOP);
-        back.mousePressed(props.back);
+        back.position(CX - BUTTON_WIDTH, BUTTON_TOP + 90);
+        back.mousePressed(() => props.back());
+
+        const save = p5.createButton('save');
+        save.position(BUTTON_LEFT, BUTTON_TOP);
+        save.mousePressed(() => {
+            const image = p5.save(canvas, filename);
+            console.log(image);
+            props.back();
+        });
 
         props.start()
     };
 
-
-    const draw = (p5: p5Types) => {
+    const mouseDragged = (p5: p5Types) => {
         p5.line(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY);
-    };
+    }
+
+    const touchMoved = (p5: p5Types) => {
+        p5.line(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY);
+    }
+
 
     return (
         <>
-            <Sketch setup={setup} draw={draw} />
-            <p className="subject">Draw an apple</p>
+            <Sketch setup={setup} touchMoved={touchMoved} mouseDragged={mouseDragged} />
+            <p className="subject">Draw {label}</p>
         </>
     );
 }

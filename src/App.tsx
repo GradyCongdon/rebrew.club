@@ -13,6 +13,7 @@ import { Draw } from './Draw';
 
 import { History } from './History';
 import { getLastSession, storeSession, storeBrew } from './Sessions';
+import { getLabel } from './Label';
 
 import './App.scss';
 import { cls } from './utils';
@@ -103,8 +104,8 @@ function App() {
       setSelected('brew');
       const nextNumber = brewNumber + 1;
       setBrew(nextNumber);
-      setPage('draw');
     }
+    setPage('draw');
   }
 
 
@@ -172,12 +173,16 @@ function App() {
   }
 
   if (page === 'draw') {
+    const label = getLabel(id, brewNumber);
     return (
       <main className="draw">
         <article>
           <Draw
             start={() => { }}
             back={() => setPage('main')}
+            isDone={isDone}
+            label={label}
+            id={`${id}-${brewNumber}`}
           />
           <Timer selected={selected} setSelected={setSelected} time={time} setTime={setTime} />
           <Overlay isDone={isDone} isOut={isOut} setIsOut={setIsOut} setTime={setTime} lastTime={lastTime} />
