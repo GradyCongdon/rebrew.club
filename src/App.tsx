@@ -52,7 +52,7 @@ function App() {
     weight,
     water,
     temperatureUnit: isCelsius ? 'C' : 'F',
-    waterUnit: isMassWater ? 'g' : 'oz',
+    waterUnit: isMassWater ? 'ml' : 'oz',
     weightUnit: isMassWeight ? 'g' : 'tsp',
   }
 
