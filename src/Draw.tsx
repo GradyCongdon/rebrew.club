@@ -10,13 +10,16 @@ interface DrawProps {
     isDone: boolean;
 }
 
-const CX = 360;
-const CY = 315;
-const C_MARGIN_TOP = 100;
-const CT = CY + C_MARGIN_TOP;
-const BUTTON_WIDTH = 10;
+const CANVAS_WIDTH = 370;
+const CANVAS_HEIGHT = 370;
+const CANVAS_MARGIN_TOP = 100;
+const CANVAS_BOTTOM = CANVAS_HEIGHT + CANVAS_MARGIN_TOP;
+
+const BUTTON_WIDTH = 30;
 const BUTTON_TOP_MARGIN = 30;
-const BUTTON_TOP = CT + BUTTON_TOP_MARGIN;
+const BUTTON_TOP = CANVAS_BOTTOM + BUTTON_TOP_MARGIN;
+const BUTTON_LEFT = 10;
+const BUTTON_RIGHT = CANVAS_WIDTH - BUTTON_WIDTH - 10;
 
 let p6: any;
 
@@ -26,7 +29,7 @@ export const Draw: React.FC<DrawProps> = (props: DrawProps) => {
 
     const setup = (p5: p5Types, canvasParentRef: Element) => {
         p6 = p5;
-        const canvas = p5.createCanvas(CX, CY).parent(canvasParentRef);
+        const canvas = p5.createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT).parent(canvasParentRef);
         p5.frameRate(120);
         p5.strokeWeight(5);
         p5.stroke('#26906D');
@@ -35,17 +38,17 @@ export const Draw: React.FC<DrawProps> = (props: DrawProps) => {
 
         const clear = p5.createButton('clear');
         clear.parent(canvasParentRef);
-        clear.position(CX - BUTTON_WIDTH, BUTTON_TOP);
+        clear.position(BUTTON_RIGHT, BUTTON_TOP + 100);
         clear.mousePressed(() => p5.clear());
 
         const back = p5.createButton('back');
         back.parent(canvasParentRef);
-        back.position(CX - BUTTON_WIDTH, BUTTON_TOP + 90);
+        back.position(BUTTON_RIGHT, BUTTON_TOP);
         back.mousePressed(() => props.back());
 
         const save = p5.createButton('save');
         save.parent(canvasParentRef);
-        save.position(50, BUTTON_TOP);
+        save.position(BUTTON_LEFT, BUTTON_TOP);
         save.mousePressed(() => {
             const image = p5.save(canvas, filename);
             console.log(image);
