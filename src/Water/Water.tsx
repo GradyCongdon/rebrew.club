@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { selector, useRecoilState, useRecoilValue } from 'recoil';
+import { selectedState, waterState, waterUnitState } from '../App';
 import { cls, parseAmountInput, scrollInput } from '../utils';
 import './Water.scss';
 
@@ -11,7 +12,20 @@ interface WaterProps {
     setSelected: any
 }
 
-export const Water = ({ water, setWater, isMass, setIsMass, selected, setSelected }: WaterProps) => {
+const isMassState = selector({
+    key: 'waterUnit',
+    get: ({ get }) => {
+        const unit = get(waterUnitState);
+        return unit === 'g';
+    }
+})
+
+export const Water = () => {
+    const [water, setWater] = useRecoilState(waterState);
+    const [selected, setSelected] = useRecoilState(selectedState);
+    const [_, setWaterUnit] = useRecoilState(waterUnitState);
+    const isMass = useRecoilValue(isMassState);
+
     const ozClasses = cls([
         'amount-label',
         'oz',
@@ -45,8 +59,8 @@ export const Water = ({ water, setWater, isMass, setIsMass, selected, setSelecte
                 </div>
             </div>
             <div className="label">
-                <button className={ozClasses} onClick={() => setIsMass(false)}>oz</button>
-                <button className={gClasses} onClick={() => setIsMass(true)}>g</button>
+                <button className={ozClasses} onClick={() => setWaterUnit('oz')}>oz</button>
+                <button className={gClasses} onClick={() => setWaterUnit('g')}>ml</button>
             </div>
         </section>
     );

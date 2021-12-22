@@ -1,4 +1,5 @@
-import React from 'react';
+import { useRecoilState } from 'recoil';
+import { colorState, selectedState } from '../App';
 import { cls } from '../utils';
 import './Color.scss'
 
@@ -17,7 +18,9 @@ const colorClass = (name: string, color: string) => cls([
 
 
 
-export const Color = ({ color, setColor: _setColor, selected, setSelected }: ColorProps) => {
+export const Color = () => {
+    const [color, _setColor] = useRecoilState(colorState);
+    const [_, setSelected] = useRecoilState(selectedState);
     const classes = cls([
         'color',
         //selected === 'color' ? 'selected' : '',

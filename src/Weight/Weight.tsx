@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { weightState, weightUnitState, selectedState } from '../App';
 import { cls, parseAmountInput, scrollInput } from '../utils';
 import './Weight.scss';
 
@@ -11,16 +12,21 @@ interface WeightProps {
     setSelected: any;
 }
 
-export const Weight = ({ weight, setWeight, isMass, setIsMass, selected, setSelected }: WeightProps) => {
+export const Weight = () => {
+    const [weight, setWeight] = useRecoilState(weightState);
+    const [weightUnit, setWeightUnit] = useRecoilState(weightUnitState);
+    const [selected, setSelected] = useRecoilState(selectedState);
+
+
     const tspClasses = cls([
         'amount-label',
         'tsp',
-        isMass ? '' : 'active',
+        weightUnit === 'tsp' ? 'active' : '',
     ]);
     const gClasses = cls([
         'amount-label',
         'g',
-        isMass ? 'active' : '',
+        weightUnit === 'g' ? 'active' : '',
     ]);
 
     const classes = cls([
@@ -40,11 +46,11 @@ export const Weight = ({ weight, setWeight, isMass, setIsMass, selected, setSele
                 className="input--weight"
                 value={weight}
                 onClick={onClick}
-                onChange={(e) => setWeight(parseAmountInput(99, e))} />
+                onChange={(e) => setWeight(parseAmountInput(33, e))} />
             <div className="diamond">
-                <button className={tspClasses} onClick={() => setIsMass(false)}>tsp</button>
+                <button className={tspClasses} onClick={() => setWeightUnit('tsp')}>tsp</button>
                 <h2 className="value">{weight}</h2>
-                <button className={gClasses} onClick={() => setIsMass(true)}>g</button>
+                <button className={gClasses} onClick={() => setWeightUnit('g')}>g</button>
             </div>
         </section>
     );

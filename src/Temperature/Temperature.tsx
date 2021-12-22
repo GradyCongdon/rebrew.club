@@ -1,26 +1,22 @@
-import React from 'react';
+import { useRecoilState } from 'recoil';
+import { selectedState, temperatureState, temperatureUnitState } from '../App';
 import { cls, parseAmountInput, scrollInput } from '../utils';
 import './Temperature.scss';
 
-interface temperatureProps {
-    temperature: number
-    setTemperature: any
-    isCelsius: boolean
-    setIsCelsius: any
-    selected: string
-    setSelected: any
-}
+export const Temperature = () => {
+    const [temperature, setTemperature] = useRecoilState(temperatureState);
+    const [temperatureUnit, setTemperatureUnit] = useRecoilState(temperatureUnitState);
+    const [selected, setSelected] = useRecoilState(selectedState);
 
-export const Temperature = ({ temperature, setTemperature, isCelsius, setIsCelsius, selected, setSelected }: temperatureProps) => {
     const fClasses = cls([
         'amount-label',
         'fahrenheit',
-        isCelsius ? '' : 'active',
+        temperatureUnit === 'F' ? 'active' : '',
     ]);
     const cClasses = cls([
         'amount-label',
         'celsius',
-        isCelsius ? 'active' : '',
+        temperatureUnit === 'C' ? 'active' : '',
     ]);
     const classes = cls([
         'temperature',
@@ -45,8 +41,8 @@ export const Temperature = ({ temperature, setTemperature, isCelsius, setIsCelsi
                 </div>
             </div>
             <div className="label">
-                <button className={fClasses} onClick={() => setIsCelsius(false)}>°F</button>
-                <button className={cClasses} onClick={() => setIsCelsius(true)}>°C</button>
+                <button className={fClasses} onClick={() => setTemperatureUnit("F")}>°F</button>
+                <button className={cClasses} onClick={() => setTemperatureUnit('C')}>°C</button>
             </div>
         </section>
     );

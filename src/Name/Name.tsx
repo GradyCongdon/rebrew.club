@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { selectedState } from '../App';
 import { cls } from '../utils';
 import './Name.scss';
 
 interface NameProps {
     name: string,
     setName: any,
-    selected: string
-    setSelected: any
 }
 
-export const Name = ({ name, setName, selected, setSelected }: NameProps) => {
-    const start = name === 'Tea'; 
+export const Name = ({ name, setName }: NameProps) => {
+    const [selected, setSelected] = useRecoilState(selectedState);
+    const start = name === 'Tea';
     const classes = cls([
         'f-cc',
         'name',

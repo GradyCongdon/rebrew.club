@@ -1,4 +1,5 @@
-import React from 'react';
+import { useRecoilState } from 'recoil';
+import { selectedState, timeState } from '../App';
 import { cls, parseAmountInput, scrollInput } from '../utils';
 import './Timer.scss'
 
@@ -26,7 +27,10 @@ interface TimerProps {
     setSelected: any
 }
 
-export const Timer = ({ time, setTime, selected, setSelected }: TimerProps) => {
+export const Timer = () => {
+    const [time, setTime] = useRecoilState(timeState);
+    const [selected, setSelected] = useRecoilState(selectedState);
+
     const [min, sec] = minSec(time);
     const setMinutes = (newMin: number) => {
         const t = (newMin * 60) + sec;

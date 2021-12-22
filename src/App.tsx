@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue } from 'recoil';
 
 import { Brew } from './Brew';
 import { Controls } from './Controls';
@@ -23,25 +24,108 @@ const lastTea = getLastSession();
 const lastBrew = lastTea.brews[lastTea.brews.length - 1] || {};
 const nextBrewTime = (t: number) => t + 15;
 
+
+const idState = atom({
+  key: 'idState',
+  default: lastTea.id,
+})
+
+export const colorState = atom({
+  key: 'colorState',
+  default: lastTea.color || '',
+})
+
+export const selectedState = atom({
+  key: 'selectedState',
+  default: '',
+});
+
+export const temperatureState = atom({
+  key: 'temperatureState',
+  default: lastBrew.temperature || 0,
+});
+
+export const temperatureUnitState = atom({
+  key: 'temperatureUnitState',
+  default: lastBrew.temperatureUnit || 'F',
+});
+
+export const weightState = atom({
+  key: 'weightState',
+  default: lastBrew.weight || 0,
+});
+
+export const weightUnitState = atom({
+  key: 'weightUnitState',
+  default: lastBrew.weightUnit || 'g',
+});
+
+export const waterState = atom({
+  key: 'waterState',
+  default: lastBrew.water || 0,
+});
+
+export const waterUnitState = atom({
+  key: 'waterUnitState',
+  default: lastBrew.waterUnit || 'g',
+});
+
+export const timeState = atom({
+  key: 'timeState',
+  default: lastBrew.time || nextBrewTime(0),
+});
+
+export const lastTimeState = atom({
+  key: 'lastTimeState',
+  default: lastBrew.time || nextBrewTime(0),
+});
+
+export const nameState = atom({
+  key: 'nameState',
+  default: lastTea.name || 'Tea',
+});
+
+export const brewNumberState = atom({
+  key: 'brewNumberState',
+  default: lastBrew.brewNumber || 0,
+});
+
+export const pageState = atom({
+  key: 'pageState',
+  default: "main",
+});
+
+export const isTickingState = atom({
+  key: 'isTickingState',
+  default: false,
+});
+
+
 function App() {
-  const [id, setId] = useState(lastTea.id);
-  const [name, setName] = useState(lastTea.name || 'Tea');
-  const [color, setColor] = useState(lastTea.color || '');
-  const [brewNumber, _setBrew] = useState(lastBrew.brewNumber || 0);
-  const [temperature, setTemperature] = useState(lastBrew.temperature || 0);
-  const [isCelsius, setIsCelsius] = useState(lastBrew.temperatureUnit === 'C');
-  const [weight, setWeight] = useState(lastBrew.weight || 0);
-  const [isMassWeight, setIsMassWeight] = useState(lastBrew.weightUnit === 'g');
-  const [water, setWater] = useState(lastBrew.water || 0);
-  const [isMassWater, setIsMassWater] = useState(lastBrew.waterUnit === 'g');
-  const [time, setTime] = useState(lastBrew.time || nextBrewTime(0));
-  const [lastTime, setLastTime] = useState(time);
+  const [id, setId] = useRecoilState(idState);
 
-  const [page, setPage] = useState('main');
-  const [selected, setSelected] = useState('');
+  const [name, setName] = useRecoilState(nameState);
+  const [color, setColor] = useRecoilState(colorState);
+  const [brewNumber, _setBrew] = useRecoilState(brewNumberState);
+
+  const [temperature, setTemperature] = useRecoilState(temperatureState);
+  const [temperatureUnit] = useRecoilState(temperatureUnitState);
+
+  const [water, setWater] = useRecoilState(waterState);
+  const [waterUnit] = useRecoilState(waterUnitState);
+
+  const [weight, setWeight] = useRecoilState(weightState);
+  const [weightUnit] = useRecoilState(weightUnitState);
+
+  const [time, setTime] = useRecoilState(timeState);
+  const [lastTime, setLastTime] = useRecoilState(lastTimeState);
+
+  const [page, setPage] = useRecoilState(pageState);
+  const [selected, setSelected] = useRecoilState(selectedState);
+
+  const [isTicking, setIsTicking] = useRecoilState(isTickingState);
+
   const [autoBrewTime, setAutoBrewTime] = useState(true);
-
-  const [isTicking, setIsTicking] = useState(false);
   const [isDone, setIsDone] = useState(false);
   const [isOut, setIsOut] = useState(false);
 
@@ -51,9 +135,9 @@ function App() {
     temperature,
     weight,
     water,
-    temperatureUnit: isCelsius ? 'C' : 'F',
-    waterUnit: isMassWater ? 'ml' : 'oz',
-    weightUnit: isMassWeight ? 'g' : 'tsp',
+    temperatureUnit,
+    waterUnit,
+    weightUnit,
   }
 
   const session = {
@@ -162,18 +246,25 @@ function App() {
     selected ? 'selecting' : '',
   ]);
 
+  const clearOverlay = () => {
+    setIsOut(true);
+    setTime(lastTime);
+  }
+
   if (page === 'history') {
 
     return (
       <main>
         <History onBack={onBack} />
-        <Overlay isDone={isDone} isOut={isOut} setIsOut={setIsOut} setTime={setTime} lastTime={lastTime} />
+        <Overlay isDone={isDone} isOut={isOut} clearOverlay={clearOverlay} />
       </main>
     );
   }
 
+
   if (page === 'draw') {
     const label = getLabel(id, brewNumber);
+
     return (
       <main className="draw">
         <article>
@@ -184,8 +275,8 @@ function App() {
             label={label}
             id={`${id}-${brewNumber}`}
           />
-          <Timer selected={selected} setSelected={setSelected} time={time} setTime={setTime} />
-          <Overlay isDone={isDone} isOut={isOut} setIsOut={setIsOut} setTime={setTime} lastTime={lastTime} />
+          <Timer />
+          <Overlay isDone={isDone} isOut={isOut} clearOverlay={clearOverlay} />
         </article>
       </main>
     );
@@ -198,20 +289,20 @@ function App() {
           {isPWA() ? 'pwa' : 'web'}
         </p>
         <Controls onOld={onOld} onNew={reset} />
-        <Name selected={selected} setSelected={setSelected} name={name} setName={setName} />
+        <Name name={name} setName={setName} />
 
-        <Temperature selected={selected} setSelected={setSelected} temperature={temperature} setTemperature={setTemperature} isCelsius={isCelsius} setIsCelsius={setIsCelsius} />
-        <Color selected={selected} setSelected={setSelected} color={color} setColor={setColor} />
+        <Temperature />
+        <Color />
 
-        <Weight selected={selected} setSelected={setSelected} weight={weight} setWeight={setWeight} isMass={isMassWeight} setIsMass={setIsMassWeight} />
-        <Water selected={selected} setSelected={setSelected} water={water} setWater={setWater} isMass={isMassWater} setIsMass={setIsMassWater} />
+        <Weight />
+        <Water />
 
-        <Timer selected={selected} setSelected={setSelected} time={time} setTime={setTime} />
-        <Brew selected={selected} brew={brewNumber} onClick={startBrewing} />
+        <Timer />
+        <Brew onClick={startBrewing} />
         <div className="sip">sip</div>
       </article>
 
-      <Overlay isDone={isDone} isOut={isOut} setIsOut={setIsOut} setTime={setTime} lastTime={lastTime} />
+      <Overlay isDone={isDone} isOut={isOut} clearOverlay={clearOverlay} />
     </main>
   );
 }

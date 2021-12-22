@@ -1,25 +1,19 @@
-import React from 'react';
 import { cls } from '../utils';
 import './Overlay.scss';
 
 interface OverlayProps {
     isDone: boolean,
     isOut: boolean,
-    setIsOut: any,
-    setTime: any,
-    lastTime: number
+    clearOverlay: any
 }
 
-export const Overlay = ({ isDone, isOut, setIsOut, setTime, lastTime }: OverlayProps) => {
+export const Overlay = ({ isDone, isOut, clearOverlay }: OverlayProps) => {
     const overlayClasses = cls([
         'overlay',
         isDone ? 'done' : '',
         isOut ? 'out' : '',
     ]);
     return (
-        <div onClick={() => {
-            setIsOut(true);
-            setTime(lastTime);
-        }} className={overlayClasses}></div>
+        <div onClick={clearOverlay} className={overlayClasses}></div>
     );
 }

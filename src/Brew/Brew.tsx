@@ -1,14 +1,17 @@
-import React from 'react';
+import { useRecoilState } from 'recoil';
+import { brewNumberState, selectedState } from '../App';
 import { cls } from '../utils';
 import './Brew.scss';
 
 interface BrewProps {
-    brew: number;
-    selected: string;
+    // brew: number;
+    // selected: string;
     onClick: any;
 }
 
-export const Brew = ({ brew, selected, onClick }: BrewProps) => {
+export const Brew = ({ onClick }: BrewProps) => {
+    const [brew] = useRecoilState(brewNumberState);
+    const [selected] = useRecoilState(selectedState);
     const classes = cls([
         'brew',
         selected === 'brew' ? 'selected' : '',
