@@ -10,15 +10,13 @@ interface DrawProps {
     isDone: boolean;
 }
 
-const WIDTH = 375;
-const CX = 340;
+const CX = 360;
 const CY = 315;
 const C_MARGIN_TOP = 100;
 const CT = CY + C_MARGIN_TOP;
 const BUTTON_WIDTH = 10;
 const BUTTON_TOP_MARGIN = 30;
 const BUTTON_TOP = CT + BUTTON_TOP_MARGIN;
-const BUTTON_LEFT = (WIDTH - CX);
 
 let p6: any;
 
@@ -47,7 +45,7 @@ export const Draw: React.FC<DrawProps> = (props: DrawProps) => {
 
         const save = p5.createButton('save');
         save.parent(canvasParentRef);
-        save.position(BUTTON_LEFT, BUTTON_TOP);
+        save.position(50, BUTTON_TOP);
         save.mousePressed(() => {
             const image = p5.save(canvas, filename);
             console.log(image);
